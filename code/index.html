@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+      
+🎉🎉Wishing you a year filled with new opportunities, success, and achievements.
+🎉🎉 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(120deg,#0f2027,#203a43,#2c5364);
+    color:#fff;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+.container{
+    padding:40px 20px;
+}
+
+h1{
+    font-size:3rem;
+    color:#ffd700;
+}
+
+#typing{
+    font-size:1.4rem;
+    margin:15px 0;
+    color:#00eaff;
+    height:30px;
+}
+
+#countdown{
+    font-size:2rem;
+    margin:20px 0;
+    color:#ffeb3b;
+}
+
+.profile img{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    border:4px solid gold;
+    margin:20px 0;
+}
+
+.btns a{
+    display:inline-block;
+    margin:8px;
+    padding:12px 22px;
+    border-radius:30px;
+    background:#ff9800;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btns a:hover{
+    background:#ffd700;
+    color:black;
+    transform:scale(1.05);
+}
+
+section{
+    margin-top:40px;
+}
+
+form{
+    max-width:400px;
+    margin:auto;
+    background:rgba(0,0,0,.4);
+    padding:25px;
+    border-radius:15px;
+}
+
+form input,textarea{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:8px;
+}
+
+form button{
+    padding:10px 25px;
+    background:#00eaff;
+    border:none;
+    border-radius:25px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.toggle{
+    margin-top:20px;
+    cursor:pointer;
+    color:#00eaff;
+}
+
+footer{
+    margin-top:40px;
+    font-size:.9rem;
+    opacity:.8;
+}
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+@media(max-width:600px){
+    h1{font-size:2.2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+</audio>
+
+<div class="container">
+
+<h1>🎆 Happy New Year 2026 🎆</h1>
+
+<div id="typing"></div>
+
+<div id="countdown"></div>
+
+<div class="profile">
+    <!-- 👇 apni photo ka link daalo -->
+    <img src="" alt="My Photo">
+</div>
+
+<p id="msg">
+May this year bring success, happiness and growth in your life 🚀
+</p>
+
+<div class="btns">
+    <a href="https://github.com/Raghav335" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/raghav-gupta-8a9152328" target="_blank">LinkedIn</a>
+    <a href="https://wa.me/918382074540" target="_blank">WhatsApp</a>
+</div>
+
+<div class="toggle" onclick="toggleLang()">🌐 Switch Hindi / English</div>
+
+<section>
+<h2>📩 Contact Me</h2>
+<form>
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea rows="4" placeholder="Your Message"></textarea>
+<button>Send</button>
+</form>
+</section>
+
+<footer>
+© 2026 | Designed with ❤️ by Raghav Gupta
+</footer>
+
+</div>
+
+<script>
+/* Typing Animation */
+const text = "New Year • New Dreams • New Opportunities";
+let i=0;
+setInterval(()=>{
+    if(i<=text.length){
+        document.getElementById("typing").innerHTML=text.slice(0,i++);
+    }
+},120);
+
+/* Countdown */
+const newYear = new Date("Jan 1, 2026 00:00:00").getTime();
+setInterval(()=>{
+    const now = new Date().getTime();
+    const diff = newYear-now;
+    if(diff<0){
+        document.getElementById("countdown").innerHTML="🎉 Your Dreams Come True in This Year  🎉";
+        confetti();
+        return;
+    }
+    const d=Math.floor(diff/(1000*60*60*24));
+    const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const m=Math.floor((diff%(1000*60*60))/(1000*60));
+    const s=Math.floor((diff%(1000*60))/1000);
+    document.getElementById("countdown").innerHTML=
+    `${d}d ${h}h ${m}m ${s}s`;
+},1000);
+
+/* Hindi-English Toggle */
+let hindi=false;
+function toggleLang(){
+    const msg=document.getElementById("msg");
+    if(!hindi){
+        msg.innerHTML="यह नया साल आपके जीवन में सफलता, खुशी और तरक्की लाए ✨";
+    }else{
+        msg.innerHTML="May this year bring success, happiness and growth in your life 🚀";
+    }
+    hindi=!hindi;
+}
+
+/* Confetti */
+const canvas=document.getElementById("confetti");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+
+let pieces=[];
+function confetti(){
+    for(let i=0;i<300;i++){
+        pieces.push({
+            x:Math.random()*canvas.width,
+            y:Math.random()*canvas.height,
+            vy:Math.random()*3+2
+        });
+    }
+}
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+        ctx.fillStyle="gold";
+        ctx.fillRect(p.x,p.y,4,4);
+        p.y+=p.vy;
+    });
+    requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>
